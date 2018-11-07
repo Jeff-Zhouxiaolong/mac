@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from emdc_fix.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="emdc_fix" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>emdc_fix</refname>
+    <refpurpose>computes Empirical Mode Decomposition</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   [IMF,NB_ITERATIONS]=emdc_fix(T,X);
+   [IMF,NB_ITERATIONS]=emdc_fix([],X);
+   [IMF,NB_ITERATIONS]=emdc_fix(T,X,NB_ITERATONS);
+   [IMF,NB_ITERATIONS]=emdc_fix(T,X,NB_ITERATONS,MAX_IMFS);
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>inputs:</term>
+      <listitem><para> </para></listitem></varlistentry>
+   <varlistentry><term>- T:</term>
+      <listitem><para> sampling times. If T=[], the signal is assumed uniformly sampled.1xN time instants</para></listitem></varlistentry>
+   <varlistentry><term>- X:</term>
+      <listitem><para> analyzed signal, 1xN signal data</para></listitem></varlistentry>
+   <varlistentry><term>- NB_ITERATIONS:</term>
+      <listitem><para> number of sifting iterations to be performed to  extract each IMF. If NB_ITERATIONS is empty or unspecified, 10 iterations   are performed by default.  Note: The effective number of sifting iterations might be less   than NB_ITERATIONS for the last modes if the sifting process has   to be stopped  because of a lack of extrema.</para></listitem></varlistentry>
+   <varlistentry><term>- MAX_IMFS:</term>
+      <listitem><para> maximum number of IMFs to be extracted. If MAX_IMFS is  zero, empty or unspecified, the default behavior is to extract as  many IMFs as possible.</para></listitem></varlistentry>
+   <varlistentry><term>outputs:</term>
+      <listitem><para> </para></listitem></varlistentry>
+   <varlistentry><term>- IMF:</term>
+      <listitem><para> intrinsic mode functions (IMFs) (last line = residual)</para></listitem></varlistentry>
+   <varlistentry><term>- NB_ITERATIONS:</term>
+      <listitem><para> effective number of sifting iterations for each mode</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+   </para>
+   <para>
+emdc_fix computes EMD according to [1] with NB_ITERATONS sifting iterations for each IMF
+   </para>
+   <para>
+mean of boolean array {(mean_amplitude)/(envelope_amplitude) &gt; THRESHOLD} &lt; TOLERANCE
+&amp;
+|#zeros-#extrema|&lt;=1
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>Bibliography</title>
+   <para>[1] N. E. Huang et al., "The empirical mode decomposition and the</para>
+   <para>Hilbert spectrum for non-linear and non stationary time series analysis",</para>
+   <para>Proc. Royal Soc. London A, Vol. 454, pp. 903-995, 1998</para>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+X = rand(1,512);
+T=linspace(0,20,512);
+
+IMF = emdc_fix(T,X);
+[IMF,NB_IT] = emdc_fix([],X);
+IMF = emdc_fix(T,X,100);
+[IMF,NB_IT] = emdc_fix([],X,[],4);
+
+   ]]></programlisting>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="emd_visu">emd_visu</link></member>
+   <member><link linkend="emd">emd</link></member>
+   <member><link linkend="emdc">emdc</link></member>
+   <member><link linkend="hhspectrum">hhspectrum</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>H. Nahrstaedt - Aug 2010</member>
+   <member>G. Rilling, last modification: 3.2007 gabriel.rilling@ens-lyon.fr</member>
+   <member>code based on a student project by T. Boustane and G. Quellec, 11.03.2004</member>
+   <member>supervised by P. Chainais (ISIMA - LIMOS - Universite Blaise Pascal - Clermont II</member>
+   <member>email : pchainai@isima.fr).</member>
+   </simplelist>
+</refsection>
+</refentry>

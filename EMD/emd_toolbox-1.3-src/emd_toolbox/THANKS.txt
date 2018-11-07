@@ -1,0 +1,10 @@
+EMD Toolbox -  THANKS file
+
+EMD has originally been written by  G. Rilling, gabriel.rilling@ens-lyon.fr
+
+Naveed ur Rehman and Danilo P. Mandic, 
+	wrote memd.m
+
+Holger Nahrstaedt
+	porting the toolbox to scilab 5
+        adding some funtions

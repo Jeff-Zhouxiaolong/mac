@@ -1,0 +1,16 @@
+clc;  h=scf(); fig_id=get(gcf(),"figure_id"); clf; mode(1);lines(0);
+t=1:500;
+t=t*1/400;
+x1=sin(2*%pi*20*t);
+x2=0.4*sin(2*%pi*40*t+140);
+z=x1+x2;
+plot(t,z);
+title("sin(2*%pi*20*t)+0.4*sin(2*%pi*40*t+140)");
+xlabel("time [sek]");
+y= linspace(1,2,500);
+z=z+y;
+imf=emd(z);
+emd_visu(z,imf,'all',fig_id+1);
+[A,f,tt]=hhspectrum(imf);
+[im,tt]=toimage(A,f);
+disp_hhs(im,5,400);

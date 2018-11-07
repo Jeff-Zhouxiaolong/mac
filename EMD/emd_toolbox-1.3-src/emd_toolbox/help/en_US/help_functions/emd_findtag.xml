@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from emd_findtag.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="emd_findtag" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>emd_findtag</refname>
+    <refpurpose>locate objects with specific tag</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   emd_findtag(STR)
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Description</title>
+   <para>
+Locate objects with specific tag STR
+   </para>
+   <para>
+emd_findtag(OBJECT_HANDLES,STR)
+Restricts the search to objects listed in objhandles and their descendants.
+   </para>
+   <para>
+emd_findtag(...,'-depth',d)
+The depth argument d controls how many levels under the handles in objhandles
+are traversed. Specify d as inf to get the default behavior of all levels.
+Specify d as 0 to restrict to the objects listed in OBJECT_HANDLES.
+   </para>
+   <para>
+Rem: In order for this to work properly, the object's tag field must be a string
+containing keywords (or tags) separated by commas.
+   </para>
+   <para>
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="emd_addtag">emd_addtag</link></member>
+   <member><link linkend="emd_hastag">emd_hastag</link></member>
+   <member><link linkend="emd_rmtag">emd_rmtag</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>H. Nahrstaedt - Aug 2010</member>
+   <member>G.Rilling 12/2006</member>
+   <member>gabriel.rilling@ens-lyon.fr</member>
+   </simplelist>
+</refsection>
+</refentry>

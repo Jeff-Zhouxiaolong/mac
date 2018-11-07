@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from cemdc_fix.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="cemdc_fix" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>cemdc_fix</refname>
+    <refpurpose>bivariate Empirical Mode Decomposition, first algorithm</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   [IMF,NB_ITERATIONS]=cemdc_fix(T,X);
+   [IMF,NB_ITERATIONS]=cemdc_fix([],X);
+   [IMF,NB_ITERATIONS]=cemdc_fix(T,X,NB_ITERATIONS);
+   [IMF,NB_ITERATIONS]=cemdc_fix(T,X,NB_ITERATIONS,MAX_IMFS);
+   [IMF,NB_ITERATIONS]=cemdc_fix(T,X,NB_ITERATIONS,MAX_IMFS,NDIRS);
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>inputs:</term>
+      <listitem><para> </para></listitem></varlistentry>
+   <varlistentry><term>- T:</term>
+      <listitem><para> sampling times. If T=[], the signal is assumed uniformly sampled.1xN time instants</para></listitem></varlistentry>
+   <varlistentry><term>- X:</term>
+      <listitem><para> analyzed signal, 1xN signal data</para></listitem></varlistentry>
+   <varlistentry><term>- NB_ITERATIONS:</term>
+      <listitem><para> number of sifting iterations to be performed to   extract each IMF. If NB_ITERATIONS is empty or unspecified, 10 iterations   are performed by default.  Note: The effective number of sifting iterations might be less  than NB_ITERATIONS for the last modes if the sifting process has to be stopped because of a lack of extrema.</para></listitem></varlistentry>
+   <varlistentry><term>- MAX_IMFS:</term>
+      <listitem><para> maximum number of IMFs to be extracted. If MAX_IMFS is  zero, empty or unspecified, the default behavior is to extract as   many IMFs as possible.</para></listitem></varlistentry>
+   <varlistentry><term>- NDIRS:</term>
+      <listitem><para> number of directions used to compute the local mean.  If unspecified, the default value is 4. TODO: the actual number of directions (according to [1]) is 2*NDIRS</para></listitem></varlistentry>
+   <varlistentry><term>outputs:</term>
+      <listitem><para> </para></listitem></varlistentry>
+   <varlistentry><term>- IMF:</term>
+      <listitem><para> intrinsic mode functions (IMFs) (last line = residual)</para></listitem></varlistentry>
+   <varlistentry><term>- NB_ITERATIONS:</term>
+      <listitem><para> effective number of sifting iterations for each mode</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+   </para>
+   <para>
+cemdc_fix computes bivariate EMD, first algorithm [1] with NB_ITERATONS sifting
+iterations for each IMF
+   </para>
+   <para>
+mean of boolean array {(mean_amplitude)/(envelope_amplitude) &gt; THRESHOLD} &lt; TOLERANCE
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>Bibliography</title>
+   <para>[1] G. Rilling, P. Flandrin, P. Gonçalves and J. M. Lilly.,</para>
+   <para>"Bivariate Empirical Mode Decomposition",</para>
+   <para>Signal Processing Letters (submitted)</para>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+X = rand(1,512)+%i*rand(1,512);
+T=linspace(0,20,512);
+
+IMF = cemdc_fix(T,X);
+[IMF,NB_IT] = cemdc_fix([],X);
+IMF = cemdc_fix(T,X,20);
+[IMF,NB_IT] = cemdc_fix([],X,[],4);
+
+   ]]></programlisting>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="cemd_visu">cemd_visu</link></member>
+   <member><link linkend="emd_visu">emd_visu</link></member>
+   <member><link linkend="emd">emd</link></member>
+   <member><link linkend="cemdc">cemdc</link></member>
+   <member><link linkend="cemdc2">cemdc2</link></member>
+   <member><link linkend="cemdc2_fix">cemdc2_fix</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>H. Nahrstaedt - Aug 2010</member>
+   <member>G. Rilling, last modification: 3.2007 gabriel.rilling@ens-lyon.fr</member>
+   <member>code based on a student project by T. Boustane and G. Quellec, 11.03.2004</member>
+   <member>supervised by P. Chainais (ISIMA - LIMOS - Universite Blaise Pascal - Clermont II</member>
+   <member>email : pchainai@isima.fr).</member>
+   </simplelist>
+</refsection>
+</refentry>

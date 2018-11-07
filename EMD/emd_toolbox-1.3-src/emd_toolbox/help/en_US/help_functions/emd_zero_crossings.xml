@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from emd_zero_crossings.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="emd_zero_crossings" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>emd_zero_crossings</refname>
+    <refpurpose>finds zero-crossings</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   indzer = emd_zero_crossings(x)
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>inputs :</term>
+      <listitem><para> </para></listitem></varlistentry>
+   <varlistentry><term>- x :</term>
+      <listitem><para> analyzed signal</para></listitem></varlistentry>
+   <varlistentry><term>outputs :</term>
+      <listitem><para> </para></listitem></varlistentry>
+   <varlistentry><term>- indzer:</term>
+      <listitem><para> = indices of zero-crossings</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+x=sin(2*%pi*10*linspace(0,1,100));
+[indzer] = emd_zero_crossings(x);
+scf(); plot2d2(x);
+plot(indzer,x(indzer),'or');
+   ]]></programlisting>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="boundary_conditions_emd">boundary_conditions_emd</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>H. Nahrstaedt - Aug 2010</member>
+   </simplelist>
+</refsection>
+</refentry>

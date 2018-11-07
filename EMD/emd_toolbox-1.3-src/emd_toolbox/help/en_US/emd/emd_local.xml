@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from emd_local.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="emd_local" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>emd_local</refname>
+    <refpurpose>("Local" Empirical Mode Decomposition) computes a local version of EMD</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   [imf,ort,nbits] = emd_local(x)
+   [imf,ort,nbits] = emd_local([],x)
+   [imf,ort,nbits] = emd_local(t,x)
+   [imf,ort,nbits] = emd_local([],x,stop)
+   [imf,ort,nbits] = emd_local(t,x,stop)
+   [imf,ort,nbits] = emd_local([],x,stop,tst)
+   [imf,ort,nbits] = emd_local(t,x,stop,tst)
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>inputs:</term>
+      <listitem><para> </para></listitem></varlistentry>
+   <varlistentry><term>- x :</term>
+      <listitem><para> analyzed signal (line vector)</para></listitem></varlistentry>
+   <varlistentry><term>- t (optional) :</term>
+      <listitem><para> sampling times (line vector) (default : 1:length(x))</para></listitem></varlistentry>
+   <varlistentry><term>- stop (optional) :</term>
+      <listitem><para> threshold, threshold2 and tolerance (optional)      for sifting stopping criterion       default : [0.05,0.5,0.05]</para></listitem></varlistentry>
+   <varlistentry><term>- tst (optional) :</term>
+      <listitem><para> if equals to 1 shows sifting steps with pause    if equals to 2 no pause</para></listitem></varlistentry>
+   <varlistentry><term>outputs:</term>
+      <listitem><para> </para></listitem></varlistentry>
+   <varlistentry><term>- imf :</term>
+      <listitem><para> intrinsic mode functions (last line = residual)</para></listitem></varlistentry>
+   <varlistentry><term>- ort :</term>
+      <listitem><para> index of orthogonality</para></listitem></varlistentry>
+   <varlistentry><term>- nbits :</term>
+      <listitem><para> number of iterations for each mode</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+stopping criterion for sifting :
+at each point : mean amplitude &lt; threshold2*envelope amplitude
+&amp;
+mean of boolean array ((mean amplitude)/(envelope amplitude) &gt; threshold) &lt; tolerance
+&amp;
+|#zeros-#extrema|&lt;=1
+</para>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+s = rand(1,512,'normal');
+imf = emd_local(s);
+emd_visu(s,imf);
+   ]]></programlisting>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="emd_local_peaks">emd_local_peaks</link></member>
+   <member><link linkend="emd_io">emd_io</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>H. Nahrstaedt Aug 2010</member>
+   <member>G. Rilling, July 2002 gabriel.rilling@ens-lyon.fr</member>
+   </simplelist>
+</refsection>
+</refentry>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from toimage.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="toimage" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>toimage</refname>
+    <refpurpose>transforms a spectrum made of 1D functions in an 2D image</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   [im,tt,ff] = toimage(A,f)
+   [im,tt,ff] = toimage(A,f,t)
+   [im,tt,ff] = toimage(A,f,splx)
+   [im,tt,ff] = toimage(A,f,splx,sply)
+   [im,tt,ff] = toimage(A,f,t,splx)
+   [im,tt,ff] = toimage(A,f,t,splx,sply)
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>inputs :</term>
+      <listitem><para> </para></listitem></varlistentry>
+   <varlistentry><term>- A    :</term>
+      <listitem><para> amplitudes of modes (1 mode per row of A)</para></listitem></varlistentry>
+   <varlistentry><term>- f    :</term>
+      <listitem><para> instantaneous frequencies</para></listitem></varlistentry>
+   <varlistentry><term>- t    :</term>
+      <listitem><para> time instants</para></listitem></varlistentry>
+   <varlistentry><term>- splx :</term>
+      <listitem><para> number of columns of the output im (time resolution).If different from length(t), works only for uniform  sampling.</para></listitem></varlistentry>
+   <varlistentry><term>- sply :</term>
+      <listitem><para> number of rows of the output im (frequency resolution).</para></listitem></varlistentry>
+   <varlistentry><term>outputs :</term>
+      <listitem><para> </para></listitem></varlistentry>
+   <varlistentry><term>- im   :</term>
+      <listitem><para> 2D image of the spectrum</para></listitem></varlistentry>
+   <varlistentry><term>- tt   :</term>
+      <listitem><para> time instants in the image</para></listitem></varlistentry>
+   <varlistentry><term>- ff   :</term>
+      <listitem><para> centers of the frequency bins</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+toimage transforms a spectrum made of 1D functions (e.g., output of "hhspectrum") in an 2D image
+</para>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+s = rand(1,512,'normal');
+imf = emd(s);
+[A,f,tt] = hhspectrum(imf(1:$-1,:));
+[im,tt]=toimage(A,f);
+disp_hhs(im);
+   ]]></programlisting>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="emd">emd</link></member>
+   <member><link linkend="hhspectrum">hhspectrum</link></member>
+   <member><link linkend="disp_hhs">disp_hhs</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>H. Nahrstaedt - Aug 2010 - 2013</member>
+   <member>G. Rilling, last modification 3.2007 gabriel.rilling@ens-lyon.fr</member>
+   </simplelist>
+</refsection>
+</refentry>

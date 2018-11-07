@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from emd_online.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="emd_online" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>emd_online</refname>
+    <refpurpose>(On Line Empirical Mode Decomposition) computes on-line EMD</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   [imf,ort,nbit] = emd_online(x)
+   [imf,ort,nbit] = emd_online([],x)
+   [imf,ort,nbit] = emd_online(t,x)
+   [imf,ort,nbit] = emd_online([],x,stop)
+   [imf,ort,nbit] = emd_online(t,x,stop)
+   [imf,ort,nbit] = emd_online([],x,stop,nbpresift)
+   [imf,ort,nbit] = emd_online(t,x,stop,nbpresift)
+   [imf,ort,nbit] = emd_online([],x,stop,nbpresift,tst)
+   [imf,ort,nbit] = emd_online(t,x,stop,nbpresift,tst)
+   [imf,ort,nbit] = emd_online(t,x,stop,nbpresift,tst,tst2)
+   [imf,ort,nbit] = emd_online(t,x,stop,nbpresift,tst,tst2)
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>inputs:</term>
+      <listitem><para> </para></listitem></varlistentry>
+   <varlistentry><term>- x :</term>
+      <listitem><para> analyzed signal</para></listitem></varlistentry>
+   <varlistentry><term>- t (optional) :</term>
+      <listitem><para> sampling times (default : 1:length(x))</para></listitem></varlistentry>
+   <varlistentry><term>- stop (optional) :</term>
+      <listitem><para> threshold, and threshold2 (optional)   tolerance, and tolerance2 (both optional) for sifting stopping criterion default : [0.05,0.5,20,100]</para></listitem></varlistentry>
+   <varlistentry><term>- nbpresift (optional) :</term>
+      <listitem><para> number of sifting by blocks iterations (default 4)</para></listitem></varlistentry>
+   <varlistentry><term>- tst (optional) :</term>
+      <listitem><para> if equals to 1 shows sifting steps</para></listitem></varlistentry>
+   <varlistentry><term>- tst2 (optional) :</term>
+      <listitem><para> if equals to 1 shows sifting by blocks steps</para></listitem></varlistentry>
+   <varlistentry><term>outputs:</term>
+      <listitem><para> </para></listitem></varlistentry>
+   <varlistentry><term>- imf :</term>
+      <listitem><para> intrinsic mode functions (last line = residual)</para></listitem></varlistentry>
+   <varlistentry><term>- ort :</term>
+      <listitem><para> index of orthogonality</para></listitem></varlistentry>
+   <varlistentry><term>- nbits :</term>
+      <listitem><para> number of iterations for each mode</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+IMPORTANT: EMD_ONLINE does not truly apply EMD on-line but it does AS IF.
+It is rather a demonstration that EMD can be applied on-line.
+   </para>
+   <para>
+stopping criterion for sifting :
+at each point : mean amplitude &lt; threshold*envelope amplitude
+if mean amplitude &gt; mtlb_max(envelope amplitude)/tolerance
+&amp;
+at each point : mean amplitude &lt; threshold2*enveloppe amplitude
+if mean amplitude &gt; mtlb_max(envelope amplitude)/tolerance2
+</para>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+s = rand(1,512,'normal');
+imf = emd_local(s);
+emd_visu(s,imf);
+See  Also
+emd_local_peaks
+emd_io
+   ]]></programlisting>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>H. Nahrstaedt  - Aug 2010</member>
+   <member>G. Rilling, July 2002 gabriel.rilling@ens-lyon.fr</member>
+   </simplelist>
+</refsection>
+</refentry>

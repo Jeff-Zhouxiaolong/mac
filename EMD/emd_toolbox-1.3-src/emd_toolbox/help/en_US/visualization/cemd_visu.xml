@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from cemd_visu.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="cemd_visu" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>cemd_visu</refname>
+    <refpurpose>visualization of bivariate/complex EMD</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   cemd_visu(x,imf)
+   cemd_visu([],x,imf)
+   cemd_visu(t,x,imf)
+   cemd_visu(x,imf,plottype)
+   cemd_visu([],x,imf,plottype)
+   cemd_visu(t,x,imf,plottype)
+   cemd_visu(x,imf,plottype,i)
+   cemd_visu([],x,imf,plottype,i)
+   cemd_visu(t,x,imf,plottype,i)
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>inputs :</term>
+      <listitem><para> </para></listitem></varlistentry>
+   <varlistentry><term>- x :</term>
+      <listitem><para> complex analyzed signal</para></listitem></varlistentry>
+   <varlistentry><term>- t :</term>
+      <listitem><para> time instants</para></listitem></varlistentry>
+   <varlistentry><term>- imf :</term>
+      <listitem><para> set of complex IMFs</para></listitem></varlistentry>
+   <varlistentry><term>- plottype (optional) :</term>
+      <listitem><para> </para></listitem></varlistentry>
+   <varlistentry><term>- i (optional) :</term>
+      <listitem><para> figure number for display</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+</refentry>

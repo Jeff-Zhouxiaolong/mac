@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from cenvelope.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="cenvelope" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>cenvelope</refname>
+    <refpurpose>computes envelope curves for bivariate EMD</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   [env, mean] = cenvelope(x);
+   [env, mean] = cenvelope([],x);
+   [env, mean] = cenvelope(x,ndirs);
+   [env, mean] = cenvelope([],x,ndirs);
+   [env, mean] = cenvelope(t,x,ndirs);
+   [env, mean] = cenvelope(x,ndirs,INTERP);
+   [env, mean] = cenvelope([],x,ndirs,INTERP);
+   [env, mean] = cenvelope(t,x,ndirs,INTERP);
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>inputs :</term>
+      <listitem><para> </para></listitem></varlistentry>
+   <varlistentry><term>- x:</term>
+      <listitem><para> analyzed signal</para></listitem></varlistentry>
+   <varlistentry><term>- t (optional):</term>
+      <listitem><para> sampling times, default 1:length(x)</para></listitem></varlistentry>
+   <varlistentry><term>- ndirs:</term>
+      <listitem><para> number of directions used to compute the mean (default: 4)   TODO: the actual number of directions according to the paper is 2*ndirs</para></listitem></varlistentry>
+   <varlistentry><term>- interp (optional):</term>
+      <listitem><para> interpolation scheme: 'linear', 'cubic' or 'spline' (default)</para></listitem></varlistentry>
+   <varlistentry><term>outputs :</term>
+      <listitem><para> </para></listitem></varlistentry>
+   <varlistentry><term>- env:</term>
+      <listitem><para> each stands for an envelope curve sustaining the tube envelope of    the complex signal</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+cenvelope computes envelope curves for bivariate EMD [1]
+</para>
+</refsection>
+
+<refsection>
+   <title>Bibliography</title>
+   <para>[1] G. Rilling, P. Flandrin, P. Gon�alves and J. M. Lilly.,</para>
+   <para>"Bivariate Empirical Mode Decomposition",</para>
+   <para>Signal Processing Letters (submitted)</para>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="cemd_disp">cemd_disp</link></member>
+   <member><link linkend="emd">emd</link></member>
+   <member><link linkend="cemdc">cemdc</link></member>
+   <member><link linkend="cemdc_fix">cemdc_fix</link></member>
+   <member><link linkend="cemdc2">cemdc2</link></member>
+   <member><link linkend="cemdc2_fix">cemdc2_fix</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>H. Nahrstaedt - Aug 2010</member>
+   <member>G. Rilling, last modification 3.2007 gabriel.rilling@ens-lyon.fr</member>
+   </simplelist>
+</refsection>
+</refentry>

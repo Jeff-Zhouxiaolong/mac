@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from plotc.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="plotc" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>plotc</refname>
+    <refpurpose>plots a complex signal in 2D projection with variable projection angle.</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   plotc
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Description</title>
+   <para>
+The angle can be modified at any time using the slider:
+slider at bottom: angle=0 the projection is the real part of the signal
+slider at 1/4: angle=pi/2 the projection is the imaginary part of the signal
+slider at top: angle=2pi same as 0
+   </para>
+   <para>
+Additionally, the user can choose to lock the axes or not when the angle
+is changed through the axes context menu. Note that the latter is disabled
+when tools from the figure toolbar (zoom,...) are selected.
+   </para>
+   <para>
+   </para>
+   <para>
+multiple uses of plotc in the same axes are possible: it
+produces only one slider that controls all the plots.
+</para>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+s = rand(1,512,'normal')+%i*rand(1,512,'normal');
+plotc(1:length(s),s);
+s2 = rand(1,512,'normal')+%i*rand(1,512,'normal');
+plotc(1:length(s2),s2,'r');
+   ]]></programlisting>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="plot3c">plot3c</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>H. Nahrstaedt - Aug 2010</member>
+   <member>G. Rilling, last modification 3.2007 gabriel.rilling@ens-lyon.fr</member>
+   </simplelist>
+</refsection>
+</refentry>

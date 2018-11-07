@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from memd.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="memd" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>memd</refname>
+    <refpurpose>Multivariate Empirical Mode Decomposition algorithm for signals cotaining 3-16 channels.</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   imf = memd(X)
+   imf = memd(X,num_directions)
+   imf = memd(X,num_directions,'stopping criteria'
+   imf = memd(X, num_directions, 'stop', stop_vec)
+   imf = memd(X, num_directions, 'fix_h', n_iter)
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Description</title>
+   <para>
+function NEMD applies the "Multivariate Empirical Mode Decomposition" algorithm (Rehman and Mandic, Proc. Roy. Soc A, 2010)
+to multivariate inputs.
+We have verified this code by simulations for signals cotaining 3-16 channels.
+   </para>
+   <para>
+imf = NEMD(X)
+returns a 3D matrix 'imf(N,M,L)' containing M multivariate IMFs, one IMF per column, computed by applying
+the multivariate EMD algorithm on the N-variate signal (time-series) X of length L.
+- For instance, imf_k = IMF(k,:,:) returns the k-th component (1 &lt;= k &lt;= N) for all of the N-variate IMFs.
+   </para>
+   <para>
+For example,  for hexavariate inputs (N=6), we obtain a 3D matrix IMF(6, M, L)
+where M is the number of IMFs extracted, and L is the data length.
+   </para>
+   <para>
+imf = NEMD(X,num_directions)
+where integer variable num_directions (&gt;= 1) specifies the total number of projections of the signal
+- As a rule of thumb, the minimum value of num_directions should be twice the number of data channels,
+- for instance, num_directions = 6  for a 3-variate signal and num_directions= 16 for an 8-variate signal
+The default number of directions is chosen to be 128 - to extract meaningful IMFs, the number of directions
+should be considerably greater than the dimensionality of the signals
+   </para>
+   <para>
+imf = NEMD(X,num_directions,'stopping criteria')
+uses the optional parameter 'stopping criteria' to control the sifting process.
+The available options are
+-  'stop' which uses the standard stopping criterion specified in [2]
+-  'fix_h' which uses the modified version of the stopping criteria specified in [3]
+The default value for the 'stopping criteria' is 'stop'.
+   </para>
+   <para>
+The settings  num_directions=128 and 'stopping criteria' = 'stop' are defaults.
+Thus imf = NEMD(X) = NEMD(X,128) = NEMD(X,128,'stop') = NEMD(X,[],'stop'),
+   </para>
+   <para>
+imf = NEMD(X, num_directions, 'stop', stop_vec)
+computes the IMFs based on the standard stopping criterion whose parameters are given in the 'stop_vec'
+- stop_vec has three elements specifying the threshold and tolerance values used, see [2].
+- the default value for the stopping vector is   step_vec = [0.075 0.75 0.075].
+- the option 'stop_vec' is only valid if the parameter 'stopping criteria' is set to 'stop'.
+   </para>
+   <para>
+imf = NEMD(X, num_directions, 'fix_h', n_iter)
+computes the IMFs with n_iter (integer variable) specifying the number of consecutive iterations when
+the number of extrema and the number of zero crossings differ at most by one [3].
+- the default value for the parameter n_iter is set to  n_iter = 5.
+- the option n_iter is only valid if the parameter  'stopping criteria' = 'fix_h'
+   </para>
+   <para>
+   </para>
+   <para>
+This code allows to process multivaraite signals having 3-16 channels, using the multivariate EMD algorithm [1].
+- to perform EMD on more than 16 channels, modify the variable 'Max_channels' on line 536 in the code accordingly.
+- to process 1- and 2-dimensional (univariate and bivariate) data using EMD, we recommend the toolbox from
+http://perso.ens-lyon.fr/patrick.flandrin/emd.html
+   </para>
+   <para>
+Acknowledgment: Part of this code is based on the bivariate EMD code, publicly available from
+http://perso.ens-lyon.fr/patrick.flandrin/emd.html
+   </para>
+   <para>
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>Bibliography</title>
+   <para>[1]  Rehman and D. P. Mandic, "Multivariate Empirical Mode Decomposition", Proceedings of the Royal Society A, 2010</para>
+   <para>[2]  G. Rilling, P. Flandrin and P. Gonçalves, "On Empirical Mode Decomposition and its Algorithms", Proc of the IEEE-EURASIP</para>
+   <para>Workshop on Nonlinear Signal and Image Processing, NSIP-03, Grado (I), June 2003</para>
+   <para>[3]  N. E. Huang et al., "A confidence limit for the Empirical Mode Decomposition and Hilbert spectral analysis",</para>
+   <para>Proceedings of the Royal Society A, Vol. 459, pp. 2317-2345, 2003</para>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+Case 1:
+
+inp = rand(1000,3,'normal');
+imf = memd(inp);
+imf_x = matrix(imf(1,:,:).entries,size(imf,2),size(imf,3));  // imfs corresponding to 1st component
+imf_y = matrix(imf(2,:,:).entries,size(imf,2),size(imf,3));  // imfs corresponding to 2nd component
+imf_z = matrix(imf(3,:,:).entries,size(imf,2),size(imf,3));  // imfs corresponding to 3rd component
+
+Case 2:
+
+loadmatfile(emd_getpath()+"demos/data/syn_hex_inp.mat");
+imf = memd(s6,256,'stop',[0.05 0.5 0.05])
+   ]]></programlisting>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>H. Nahrstaedt - Aug 2010</member>
+   <member>Copyright: Naveed ur Rehman and Danilo P. Mandic, Oct-2009</member>
+   </simplelist>
+</refsection>
+</refentry>

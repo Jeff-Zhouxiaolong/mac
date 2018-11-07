@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from emdc.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="emdc" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>emdc</refname>
+    <refpurpose>computes Empirical Mode Decomposition</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   [IMF,NB_ITERATIONS]=emdc(T,X);
+   [IMF,NB_ITERATIONS]=emdc([],X;
+   [IMF,NB_ITERATIONS]=emdc(T,X,STOP_PARAMETERS);
+   [IMF,NB_ITERATIONS]=emdc(T,X,STOP_PARAMETERS,MAX_IMFS);
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>inputs:</term>
+      <listitem><para> </para></listitem></varlistentry>
+   <varlistentry><term>- T:</term>
+      <listitem><para> sampling times. If T=[], the signal is assumed uniformly sampled. 1xN time instants</para></listitem></varlistentry>
+   <varlistentry><term>- X:</term>
+      <listitem><para> analyzed signal, 1xN signal data</para></listitem></varlistentry>
+   <varlistentry><term>- STOP_PARAMETERS:</term>
+      <listitem><para> parameters for the stopping criterion: if scalar the value is used to specify THRESHOLD only. otherwise the vector should be: [THRESHOLD,TOLERANCE]. if STOP_PARAMETERS is unspecified or empty, default values are used: [0.05,0.05]</para></listitem></varlistentry>
+   <varlistentry><term>- MAX_IMFS:</term>
+      <listitem><para> maximum number of IMFs to be extracted. If MAX_IMFS is  zero, empty or unspecified, the default behavior is to extract as   many IMFs as possible.</para></listitem></varlistentry>
+   <varlistentry><term>outputs:</term>
+      <listitem><para> </para></listitem></varlistentry>
+   <varlistentry><term>- IMF:</term>
+      <listitem><para> intrinsic mode functions (IMFs) (last line = residual)</para></listitem></varlistentry>
+   <varlistentry><term>- NB_ITERATIONS:</term>
+      <listitem><para> effective number of sifting iterations for each mode</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+   </para>
+   <para>
+   </para>
+   <para>
+computes EMD according to [1] with stopping criterion for sifting in [2]:
+   </para>
+   <para>
+mean of boolean array {(mean_amplitude)/(envelope_amplitude) &gt; THRESHOLD} &lt; TOLERANCE
+&amp;
+|#zeros-#extrema|&lt;=1
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>Bibliography</title>
+   <para>[1] N. E. Huang et al., "The empirical mode decomposition and the</para>
+   <para>Hilbert spectrum for non-linear and non stationary time series analysis",</para>
+   <para>Proc. Royal Soc. London A, Vol. 454, pp. 903-995, 1998</para>
+   <para>[2] G. Rilling, P. Flandrin and P. Gonçalves</para>
+   <para>"On Empirical Mode Decomposition and its algorithms",</para>
+   <para>IEEE-EURASIP Workshop on Nonlinear Signal and Image Processing</para>
+   <para>NSIP-03, Grado (I), June 2003</para>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+X = rand(1,512);
+T=linspace(0,20,512);
+
+IMF = emdc(T,X);
+[IMF,NB_IT] = emdc([],X);
+IMF = emdc(T,X,0.1);
+IMF = emdc(T,X,[0.1,0.1]);
+[IMF,NB_IT] = emdc([],X,[],4);
+
+   ]]></programlisting>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="emd_visu">emd_visu</link></member>
+   <member><link linkend="emd">emd</link></member>
+   <member><link linkend="emdc_fix">emdc_fix</link></member>
+   <member><link linkend="hhspectrum">hhspectrum</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>H. Nahrstaedt - Aug 2010</member>
+   <member>G. Rilling, last modification: 3.2007 gabriel.rilling@ens-lyon.fr</member>
+   <member>code based on a student project by T. Boustane and G. Quellec, 11.03.2004</member>
+   <member>supervised by P. Chainais (ISIMA - LIMOS - Universite Blaise Pascal - Clermont II</member>
+   <member>email : pchainai@isima.fr).</member>
+   </simplelist>
+</refsection>
+</refentry>

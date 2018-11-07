@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from cemd_disp.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="cemd_disp" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>cemd_disp</refname>
+    <refpurpose>displays complex envelope curves and the corresponding tube envelope</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   cemd_disp(X,ENV)
+   cemd_disp([],X,ENV)
+   cemd_disp(T,X,ENV)
+   cemd_disp(X,ENV,MODE)
+   cemd_disp(T,X,ENV,MODE)
+   cemd_disp([],X,ENV,MODE)
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>inputs:</term>
+      <listitem><para> </para></listitem></varlistentry>
+   <varlistentry><term>- T:</term>
+      <listitem><para> time instants</para></listitem></varlistentry>
+   <varlistentry><term>- X:</term>
+      <listitem><para> analyzed signal (complex)</para></listitem></varlistentry>
+   <varlistentry><term>- ENV:</term>
+      <listitem><para> matrix returned by cenvelope.m Each line is an envelope curve</para></listitem></varlistentry>
+   <varlistentry><term>- MODE:</term>
+      <listitem><para> 'render' -&gt; 3D rendering of the tube enclosing the signal    'wire'   -&gt; wireframe display (much faster if there is no hardware acceleration)</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+TODO: the program uses zbuffer rendering by default. You may switch to openGL
+rendering by commenting/uncommenting a line at the beginning of the function.
+openGL rendering is faster but zbuffer is generally nicer.
+</para>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+s = rand(1,512,'normal')+%i*rand(1,512,'normal');
+[env] = cenvelope(s);
+cemd_disp(s,env);
+   ]]></programlisting>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="cenvelope">cenvelope</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>H. Nahrstaedt - Aug 2010</member>
+   <member>G. Rilling, last modification: 3.2007 gabriel.rilling@ens-lyon.fr</member>
+   </simplelist>
+</refsection>
+</refentry>

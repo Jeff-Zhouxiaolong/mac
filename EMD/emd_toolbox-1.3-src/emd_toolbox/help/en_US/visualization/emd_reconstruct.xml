@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from emd_reconstruct.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="emd_reconstruct" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>emd_reconstruct</refname>
+    <refpurpose>partial reconstructions (fine to coarse and coarse to fine) for real and complex data.</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   [f2c, c2f] = emd_reconstruct(imf)
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>inputs :</term>
+      <listitem><para> </para></listitem></varlistentry>
+   <varlistentry><term>- imf :</term>
+      <listitem><para> intrinsic mode functions (last line = residual)</para></listitem></varlistentry>
+   <varlistentry><term>outputs :</term>
+      <listitem><para> </para></listitem></varlistentry>
+   <varlistentry><term>- f2c :</term>
+      <listitem><para> fine to coarse reconstruction</para></listitem></varlistentry>
+   <varlistentry><term>- c2f :</term>
+      <listitem><para> coarse to fine reconstruction</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+s = rand(1,512,'normal');
+imf = emd(s);
+[f2c, c2f] = emd_reconstruct(imf);
+   ]]></programlisting>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="cemd_visu">cemd_visu</link></member>
+   <member><link linkend="emd_visu">emd_visu</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>H. Nahrstaedt - Aug  2010</member>
+   <member>P. Flandrin, Mar. 13, 2003</member>
+   <member>G. Rilling, last modification 3.2006 gabriel.rilling@ens-lyon.fr</member>
+   </simplelist>
+</refsection>
+</refentry>

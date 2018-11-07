@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from boundary_conditions_emd.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="boundary_conditions_emd" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>boundary_conditions_emd</refname>
+    <refpurpose>extends an extrema set to limit edge effects on the interpolations</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   [TMIN,TMAX,ZMIN,ZMAX,EMODE] = boundary_conditions_emd(INDMIN,INDMAX,T,X,Z,NBSYM)
+   [TMIN,TMAX,ZMIN,ZMAX,EMODE] = boundary_conditions_emd(INDMIN,INDMAX,[],X,Z,NBSYM)
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>inputs:</term>
+      <listitem><para> </para></listitem></varlistentry>
+   <varlistentry><term>- INDMIN, INDMAX:</term>
+      <listitem><para> indices of minima and maxima in the real signal X</para></listitem></varlistentry>
+   <varlistentry><term>- T:</term>
+      <listitem><para> sampling times. If emtpy, then t is set to t = 1:length(x);</para></listitem></varlistentry>
+   <varlistentry><term>- X:</term>
+      <listitem><para> real signal in which INDMIN and INDMAX are the indices of extrema</para></listitem></varlistentry>
+   <varlistentry><term>- Z:</term>
+      <listitem><para> signal which values are interpolated in the final envelope</para></listitem></varlistentry>
+   <varlistentry><term>- NBSYM:</term>
+      <listitem><para> number of points added to each end</para></listitem></varlistentry>
+   <varlistentry><term>outputs:</term>
+      <listitem><para> </para></listitem></varlistentry>
+   <varlistentry><term>- TMIN, TMAX:</term>
+      <listitem><para> extended sampling times</para></listitem></varlistentry>
+   <varlistentry><term>- ZMIN, ZMAX:</term>
+      <listitem><para> extended "extrema" set</para></listitem></varlistentry>
+   <varlistentry><term>-  EMODE:</term>
+      <listitem><para> 0 means the signal has not enough extrema. 1 means x has enough extrema.</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+defines new extrema points to extend the interpolations at the edges of the
+signal (mainly mirror symmetry)
+   </para>
+   <para>
+- for a real signal X:
+   </para>
+   <para>
+[TMIN,TMAX,ZMIN,ZMAX] = boundary_conditions_emd(INDMIN,INDMAX,T,X,X,NBSYM)
+   </para>
+   <para>
+- for a complex signal Z and a direction PHI:
+   </para>
+   <para>
+X = exp(-i*PHI)*Z;
+   </para>
+   <para>
+[TMIN,TMAX,ZMIN,ZMAX] = boundary_conditions_emd(INDMIN,INDMAX,T,X,Z,NBSYM)
+   </para>
+   <para>
+TODO: it has to be noted that this function was originally written for the
+classical EMD and adapted to the bivariate case without a proper study of its
+effects. The edge effects problem for the bivariate EMD has not been studied yet.
+</para>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="emd_local_peaks">emd_local_peaks</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>H. Nahrstaedt</member>
+   <member>G. Rilling, last modification 3.2007 gabriel.rilling@ens-lyon.fr</member>
+   </simplelist>
+</refsection>
+</refentry>

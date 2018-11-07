@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from emd.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="emd" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>emd</refname>
+    <refpurpose>computes Empirical Mode Decomposition</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   [IMF,ORT,NB_ITERATIONS] = emd(X)
+   [IMF,ORT,NB_ITERATIONS] = emd(X,...,'Option_name',Option_value,...)
+   [IMF,ORT,NB_ITERATIONS] = emd(X,OPTS)
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>stopping criterion options:</term>
+      <listitem><para> </para></listitem></varlistentry>
+   <varlistentry><term>STOP:</term>
+      <listitem><para> vector of stopping parameters [THRESHOLD,THRESHOLD2,TOLERANCE] if the input vector's length is less than 3, only the first parameters are set, the remaining ones taking default values. default: [0.05,0.5,0.05]</para></listitem></varlistentry>
+   <varlistentry><term>FIX (int):</term>
+      <listitem><para> disable the default stopping criterion and do exactly &lt;FIX&gt;  number of sifting iterations for each mode</para></listitem></varlistentry>
+   <varlistentry><term>FIX_H (int):</term>
+      <listitem><para> disable the default stopping criterion and do &lt;FIX_H&gt; sifting  iterations with |#zeros-#extrema|&lt;=1 to stop [4]</para></listitem></varlistentry>
+   <varlistentry><term>bivariate/complex EMD options:</term>
+      <listitem><para> </para></listitem></varlistentry>
+   <varlistentry><term>COMPLEX_VERSION:</term>
+      <listitem><para> selects the algorithm used for complex EMD ([3])</para></listitem></varlistentry>
+   <varlistentry><term>COMPLEX_VERSION = 1:</term>
+      <listitem><para> "algorithm 1"</para></listitem></varlistentry>
+   <varlistentry><term>COMPLEX_VERSION = 2:</term>
+      <listitem><para> "algorithm 2" (default)</para></listitem></varlistentry>
+   <varlistentry><term>NDIRS:</term>
+      <listitem><para> number of directions in which envelopes are computed (default 4) rem: the actual number of directions (according to [3]) is 2*NDIRS</para></listitem></varlistentry>
+   <varlistentry><term>other options:</term>
+      <listitem><para> </para></listitem></varlistentry>
+   <varlistentry><term>T:</term>
+      <listitem><para> sampling times (line vector) (default: 1:length(x))</para></listitem></varlistentry>
+   <varlistentry><term>MAXITERATIONS:</term>
+      <listitem><para> maximum number of sifting iterations for the computation of each mode (default: 2000)</para></listitem></varlistentry>
+   <varlistentry><term>MAXMODES:</term>
+      <listitem><para> maximum number of imfs extracted (default: Inf)</para></listitem></varlistentry>
+   <varlistentry><term>DISPLAY:</term>
+      <listitem><para> if equals to 1 shows sifting steps with pause if equals to 2 shows sifting steps without pause (movie style) rem: display is disabled when the input is complex</para></listitem></varlistentry>
+   <varlistentry><term>INTERP:</term>
+      <listitem><para> interpolation scheme: 'linear', 'cubic', 'pchip' or 'spline' (default) see interp1 documentation for details</para></listitem></varlistentry>
+   <varlistentry><term>MASK:</term>
+      <listitem><para> masking signal used to improve the decomposition according to [5]</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+   </para>
+   <para>
+IMF = EMD(X) where X is a real vector computes the Empirical Mode Decomposition [1] of X, resulting in a matrix IMF containing 1 IMF per row, the/ last one being the residue. The default stopping criterion is the one proposed in [2]:
+   </para>
+   <para>
+at each point, mean_amplitude &lt; THRESHOLD2*envelope_amplitude
+&amp;
+mean of boolean array {(mean_amplitude)/(envelope_amplitude) &gt; THRESHOLD} &lt; TOLERANCE
+&amp;
+|#zeros-#extrema|&lt;=1
+   </para>
+   <para>
+where mean_amplitude = abs(envelope_max+envelope_min)/2
+and envelope_amplitude = abs(envelope_max-envelope_min)/2
+   </para>
+   <para>
+IMF = EMD(X) where X is a complex vector computes Bivariate Empirical Mode
+Decomposition [3] of X, resulting in a matrix IMF containing 1 IMF per row, the
+last one being the residue. The default stopping criterion is similar to the
+one proposed in [2]:
+   </para>
+   <para>
+at each point, mean_amplitude &lt; THRESHOLD2*envelope_amplitude
+&amp;
+mean of boolean array {(mean_amplitude)/(envelope_amplitude) &gt; THRESHOLD} &lt; TOLERANCE
+   </para>
+   <para>
+where mean_amplitude and envelope_amplitude have definitions similar to the
+real case
+   </para>
+   <para>
+IMF = EMD(X,...,'Option_name',Option_value,...) sets options Option_name to
+the specified Option_value (see Options)
+   </para>
+   <para>
+IMF = EMD(X,OPTS) is equivalent to the above syntax provided OPTS is a struct
+object with field names corresponding to option names and field values being the
+associated values
+   </para>
+   <para>
+[IMF,ORT,NB_ITERATIONS] = EMD(...) returns an index of orthogonality
+   </para>
+   <para>
+and the number of iterations to extract each mode in NB_ITERATIONS
+</para>
+</refsection>
+
+<refsection>
+   <title>Bibliography</title>
+   <para>[1] N. E. Huang et al., "The empirical mode decomposition and the</para>
+   <para>Hilbert spectrum for non-linear and non stationary time series analysis",</para>
+   <para>Proc. Royal Soc. London A, Vol. 454, pp. 903-995, 1998</para>
+   <para>[2] G. Rilling, P. Flandrin and P. Gonzalves</para>
+   <para>"On Empirical Mode Decomposition and its algorithms",</para>
+   <para>IEEE-EURASIP Workshop on Nonlinear Signal and Image Processing</para>
+   <para>NSIP-03, Grado (I), June 2003</para>
+   <para>[3] G. Rilling, P. Flandrin, P. Gonzalves and J. M. Lilly.,</para>
+   <para>"Bivariate Empirical Mode Decomposition",</para>
+   <para>Signal Processing Letters (submitted)</para>
+   <para>[4] N. E. Huang et al., "A confidence limit for the Empirical Mode</para>
+   <para>Decomposition and Hilbert spectral analysis",</para>
+   <para>Proc. Royal Soc. London A, Vol. 459, pp. 2317-2345, 2003</para>
+   <para>[5] R. Deering and J. F. Kaiser, "The use of a masking signal to improve</para>
+   <para>empirical mode decomposition", ICASSP 2005</para>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+X = rand(1,512);
+
+IMF = emd(X);
+
+IMF = emd(X,'STOP',[0.1,0.5,0.05],'MAXITERATIONS',100);
+
+T=linspace(0,20,1e3);
+X = 2*exp(%i*T)+exp(3*%i*T)+.5*T;
+IMF = emd(X,'T',T);
+cemd_visu(X,IMF);
+
+OPTIONS.DISPLAY = 1;
+OPTIONS.FIX = 10;
+OPTIONS.MAXMODES = 3;
+[IMF,ORT,NBITS] = emd(real(X),OPTIONS);
+
+
+
+   ]]></programlisting>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="emd_visu">emd_visu</link></member>
+   <member><link linkend="hhspectrum">hhspectrum</link></member>
+   <member><link linkend="emdc">emdc</link></member>
+   <member><link linkend="emdc_fix">emdc_fix</link></member>
+   <member><link linkend="cemdc">cemdc</link></member>
+   <member><link linkend="cemdc_fix">cemdc_fix</link></member>
+   <member><link linkend="cemdc2">cemdc2</link></member>
+   <member><link linkend="cemdc2_fix">cemdc2_fix</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>Holger Nahrstaedt - Aug 2010</member>
+   <member>G. Rilling, last modification: 3.2007 gabriel.rilling@ens-lyon.fr</member>
+   </simplelist>
+</refsection>
+</refentry>

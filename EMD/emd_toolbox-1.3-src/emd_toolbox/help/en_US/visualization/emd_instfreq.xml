@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from emd_instfreq.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="emd_instfreq" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>emd_instfreq</refname>
+    <refpurpose>Instantaneous frequency estimation.</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   [FNORMHAT,T]=emd_instfreq(X)
+   [FNORMHAT,T]=emd_instfreq(X,T)
+   [FNORMHAT,T]=emd_instfreq(X,T,L)
+   [FNORMHAT,T]=emd_instfreq(X,T,L,TRACE)
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>X :</term>
+      <listitem><para> Analytic signal to be analyzed.</para></listitem></varlistentry>
+   <varlistentry><term>T :</term>
+      <listitem><para> Time instants            (default : 2:length(X)-1).</para></listitem></varlistentry>
+   <varlistentry><term>L :</term>
+      <listitem><para> If L=1, computes the (normalized) instantaneous frequency  of the signal X defined as moc_angle(X(T+1)*conj(X(T-1)) ;   if L&gt;1, computes a Maximum Likelihood estimation of the   instantaneous frequency of the deterministic part of the signal    blurried in a white gaussian noise.        L must be an integer           (default : 1).</para></listitem></varlistentry>
+   <varlistentry><term>TRACE :</term>
+      <listitem><para> if nonzero, the progression of the algorithm is shown   (default : 0).</para></listitem></varlistentry>
+   <varlistentry><term>FNORMHAT :</term>
+      <listitem><para> Output (normalized) instantaneous frequency.</para></listitem></varlistentry>
+   <varlistentry><term>T :</term>
+      <listitem><para> Time instants.</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+emd_instfreq computes the instantaneous frequency of the analytic signal X at time instant(s) T, using the
+trapezoidal integration rule.
+The result FNORMHAT lies between 0.0 and 0.5.
+</para>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>H. Nahrstaedt - Aug 2010</member>
+   <member>F. Auger, March 1994, July 1995.</member>
+   <member>Copyright (c) 1996 by CNRS (France).</member>
+   </simplelist>
+</refsection>
+</refentry>

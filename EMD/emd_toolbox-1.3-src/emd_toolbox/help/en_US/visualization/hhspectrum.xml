@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from hhspectrum.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="hhspectrum" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>hhspectrum</refname>
+    <refpurpose>compute Hilbert-Huang spectrum</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   [A,f,tt] = hhspectrum(x)
+   [A,f,tt] = hhspectrum([],x)
+   [A,f,tt] = hhspectrum(t,x)
+   [A,f,tt] = hhspectrum(x,l)
+   [A,f,tt] = hhspectrum([],x,l)
+   [A,f,tt] = hhspectrum(t,x,l)
+   [A,f,tt] = hhspectrum(x,l,aff)
+   [A,f,tt] = hhspectrum([],x,aff)
+   [A,f,tt] = hhspectrum(t,x,l,aff)
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>inputs:</term>
+      <listitem><para> </para></listitem></varlistentry>
+   <varlistentry><term>- x   :</term>
+      <listitem><para> matrix with one signal per row</para></listitem></varlistentry>
+   <varlistentry><term>- t   :</term>
+      <listitem><para> time instants</para></listitem></varlistentry>
+   <varlistentry><term>- l   :</term>
+      <listitem><para> estimation parameter for emd_instfreq (integer &gt;=1 (1:default))</para></listitem></varlistentry>
+   <varlistentry><term>- aff :</term>
+      <listitem><para> if 1, displays the computation evolution</para></listitem></varlistentry>
+   <varlistentry><term>outputs:</term>
+      <listitem><para> </para></listitem></varlistentry>
+   <varlistentry><term>- A   :</term>
+      <listitem><para> instantaneous amplitudes</para></listitem></varlistentry>
+   <varlistentry><term>- f   :</term>
+      <listitem><para> instantaneous frequencies</para></listitem></varlistentry>
+   <varlistentry><term>- tt  :</term>
+      <listitem><para> truncated time instants</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+need the Time-Frequency Toolbox (stftb)
+</para>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+
+s = rand(1,512,'normal');
+imf = emd(s);
+[A,f,tt] = hhspectrum(imf(1:$-1,:));
+[im,tt]=toimage(A,f);
+disp_hhs(im);
+
+s = rand(10,512,'normal');
+[A,f,tt] = hhspectrum([],s,2,1);
+[im,tt]=toimage(A,f);
+disp_hhs(im);
+
+   ]]></programlisting>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="emd">emd</link></member>
+   <member><link linkend="toimage">toimage</link></member>
+   <member><link linkend="disp_hhs">disp_hhs</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>H. Nahrstaedt - Aug 2010</member>
+   <member>G. Rilling, last modification 3.2007 gabriel.rilling@ens-lyon.fr</member>
+   </simplelist>
+</refsection>
+</refentry>

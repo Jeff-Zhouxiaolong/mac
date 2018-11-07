@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from disp_hhs.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="disp_hhs" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>disp_hhs</refname>
+    <refpurpose>display Hilbert-Huang spectrum</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   disp_hhs(im)
+   disp_hhs(im,t)
+   disp_hhs(im,threshold)
+   disp_hhs(im,t,threshold)
+   disp_hhs(im,threshold,fs)
+   disp_hhs(im,[],fs)
+   disp_hhs(im,t,[],fs)
+   disp_hhs(im,t,threshold,fs)
+   disp_hhs(im,t,threshold)
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>- im:</term>
+      <listitem><para> image matrix (e.g., output of "toimage")</para></listitem></varlistentry>
+   <varlistentry><term>- t (optional):</term>
+      <listitem><para> time instants (e.g., output of "toimage")</para></listitem></varlistentry>
+   <varlistentry><term>- threshold:</term>
+      <listitem><para> is the visualization threshold, in %   default: threshold=5;</para></listitem></varlistentry>
+   <varlistentry><term>- fs:</term>
+      <listitem><para> sampling frequency</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+s = rand(1,512,'normal');
+imf = emd(s);
+[A,f,tt] = hhspectrum(imf(1:$-1,:));
+[im,tt]=toimage(A,f);
+disp_hhs(im);
+   ]]></programlisting>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="emd">emd</link></member>
+   <member><link linkend="hhspectrum">hhspectrum</link></member>
+   <member><link linkend="toimage">toimage</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>H. Nahrstaedt</member>
+   <member>G. Rilling, last modification 3.2007 gabriel.rilling@ens-lyon.fr</member>
+   </simplelist>
+</refsection>
+</refentry>

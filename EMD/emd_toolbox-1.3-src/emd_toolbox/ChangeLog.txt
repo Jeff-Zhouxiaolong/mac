@@ -1,0 +1,12 @@
+EMD - Scilab  Toolbox
+__________________________________________________________________
+1.3 -  several bugfixes
+    - emd_instfreq added
+    - io, rmtag, addtag, findtag, peaks, local_peaks, zero_crossing, dirstretch have now emd_ as prefix
+    - help pages and demos fixed
+1.2  - works under scilab 5.4
+
+1.1  - some Bugs are removed
+     - help chapter are added
+
+1.0  Initial release

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns5="http://www.w3.org/1999/xhtml" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" version="5.0-subset Scilab" xml:id="emd_toolbox" xml:lang="en">
+  <info>
+    <pubdate>$LastChangedDate: 26-08-2010 $</pubdate>
+  </info>
+  <refnamediv>
+    <refname>EMD Toolbox</refname>
+    <refpurpose>Overview of EMD features</refpurpose>
+  </refnamediv>
+   <refsection>
+    <title>Functions:</title>
+
+    <variablelist>
+    
+   <varlistentry><term>Empirical Mode Decomposition  :</term>
+      <listitem>
+       <para><link linkend="emd">emd</link>Empirical Mode Decomposition </para>
+        <para><link linkend="emdc">emdc</link>Empirical Mode Decomposition </para>
+        <para><link linkend="emdc_fix">emdc_fix</link>Empirical Mode Decomposition </para>	
+        <para><link linkend="cemdc">cemdc</link> bivariate Empirical Mode Decomposition </para>	
+        <para><link linkend="cemdc_fix">cemdc_fix</link>bivariate Empirical Mode Decomposition </para>	
+        <para><link linkend="cemdc2">cemdc2</link>bivariate Empirical Mode Decomposition </para>	
+        <para><link linkend="cemdc2_fix">cemdc2_fix</link>bivariate Empirical Mode Decomposition </para>	
+        <para><link linkend="memd">memd</link>Multivariate Empirical Mode Decomposition</para>	
+        <para><link linkend="emd_online">emd_online</link>On Line Empirical Mode Decomposition </para>	
+        <para><link linkend="emd_local">emd_local</link> "Local" Empirical Mode Decomposition</para>		
+    </listitem>
+   </varlistentry>
+   
+      <varlistentry><term>help function for EMD  :</term>
+   <listitem>
+    <para><link linkend="zero_crossings">zero_crossings</link> finds zero-crossings</para>
+      <para><link linkend="peaks">peaks</link> finds peaks (local maxima)</para>
+   <para><link linkend="local_peaks">local_peaks</link>  finds local extrema </para>
+        <para><link linkend="io">io</link> computes the index of orthogonality</para>
+     </listitem>
+   </varlistentry>
+   
+   <varlistentry><term>visualization of EMD  :</term>
+   <listitem>
+    <para><link linkend="disp_hhs">disp_hhs</link>  display Hilbert-Huang spectrum</para>
+   <para><link linkend="emd_visu">emd_visu</link> visualization of EMD and partial reconstructions</para>
+ <para><link linkend="toimage">toimage</link> transforms a spectrum made of 1D functions in an 2D image</para>
+ <para><link linkend="hhspectrum">hhspectrum</link> compute Hilbert-Huang spectrum</para>
+ <para><link linkend="cemd_visu">cemd_visu</link>visualization of bivariate/complex EMD</para>
+  <para><link linkend="cemd_disp">cemd_disp</link> displays complex envelope curves and the corresponding tube envelope</para>
+ <para><link linkend="plotc">plotc</link>  plots a complex signal in 2D projection with variable projection angle.</para>
+ <para><link linkend="plot3c">plot3c</link> plots a complex signal in 3D</para>
+ <para><link linkend="cenvelope">cenvelope</link>  computes envelope curves for bivariate EMD</para>
+  <para><link linkend="emd_reconstruct">emd_reconstruct</link>  partial reconstructions (fine to coarse and coarse to fine) for real and complex data.</para>
+   </listitem>
+   </varlistentry>
+   
+
+   
+    </variablelist>
+  </refsection>
+  
+ <refsection>
+    <title>Authors</title>
+    <simplelist type="vert">
+       <member>G. Rilling - 3.2007</member>
+      <member>Holger Nahrstaedt - Aug 2010</member>
+    </simplelist>
+  </refsection>
+</refentry>

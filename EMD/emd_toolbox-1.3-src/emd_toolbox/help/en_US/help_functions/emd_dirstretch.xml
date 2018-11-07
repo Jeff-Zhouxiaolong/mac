@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from dirstretch.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="dirstretch" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>dirstretch</refname>
+    <refpurpose>variable directional stretching of a complex vector</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   Y=dirstretch(X,D)
+   Y=dirstretch(X,DIR,COEF)
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Description</title>
+   <para>
+dirstretch(X,D) where X is a complex vector and D a complex scalar stretches X by abs(D) along the direction arg(D)
+if D is a vector the same size as X, then X(i) is stretched by abs(D(i)) along the direction arf(D(i))
+   </para>
+   <para>
+dirstretch(X,DIR,COEF) where X is a complex vector, DIR is either a unit modulus complex number or a real number and COEF a real number
+stretches X  by COEF along the direction DIR (or EXP(I*DIR) if DIR is real)
+if DIR and/or COEF is a vector the same size as X, then X(i) is stretched by COEF(i) along the direction DIR(i) (or EXP(I*DIR(i)))
+</para>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>H. Nahrstaedt - Aug 2010</member>
+   <member>G. Rilling 3.2007 gabriel.rilling@ens-lyon.fr</member>
+   </simplelist>
+</refsection>
+</refentry>
